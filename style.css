@@ -1,0 +1,793 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&family=Rubik&family=Ubuntu&display=swap');
+
+/* font-family: 'Roboto', sans-serif;
+font-family: 'Rubik', sans-serif;
+font-family: 'Ubuntu', sans-serif; */
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+
+body {
+    background-color: wheat;
+    font-family: 'Rubik', sans-serif;
+    color: black;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header {
+    border: 4px solid red;
+    width: 90%;
+    height: 90%;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: hidden;
+}
+header .menuSide,.songSide {
+    /* border: 2px solid black; */
+    position: relative;
+    background-color: rgb(164, 188, 191);
+    width: 25%;
+    height: 90%;    
+}
+
+header .songSide {
+    width: 75%;
+    background-color: rgb(124, 161, 166);
+
+}
+
+header .menuSide h1 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+header  .playList {
+    display: flex;
+    flex-direction: column;
+    margin: 10px 20px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+header .menuSide .playList h4 {
+    /* padding: 10px; */
+    margin: 10px;
+    font-size: 1.3rem;
+    transition: 0.3s all;
+    cursor: pointer;
+    display: flex;
+}
+
+header .menuSide .playList h4:hover {
+    color: rgb(16, 60, 98);
+    font-size: 1.1rem;
+}
+
+header .menuSide .playList h4 span {
+    position: relative;
+    margin-right: 20px;
+}
+
+header .menuSide .playList h4 span::before {
+    content: '';
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border: 2px solid black;
+    border-radius: 5px;
+    top: 6px;
+    /* bottom: 1px; */
+    transition: 0.3s linear;
+
+}
+
+header .menuSide .playList h4:hover span::before {
+    background-color: rgb(16, 60, 98);
+}
+
+header .menuSide .playList .bi {
+    display: none;
+}
+
+header .menuSide .playList .active {
+    color: rgb(16, 60, 98);
+}
+
+header .menuSide .playList .active span {
+    display: none;
+}
+
+header .menuSide .playList .active .bi {
+    display: flex;
+    position: relative;
+    top: 6px;
+    margin-right: 20px;
+}
+
+header .menuSide .songMenu {
+    width: 100%;
+    height: 50vh;
+    /* border: 2px solid red; */
+    overflow-y: auto;
+    /* background-color: rgb(108, 161, 180); */
+}
+
+header .menuSide .songMenu::-webkit-scrollbar {
+    display: none;
+}
+
+
+header .menuSide .songMenu span {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 1.3rem;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+header .menuSide .songMenu li {
+    list-style: none;
+    padding: 5px 0px 10px 10px;
+    display: flex;
+    align-items: center;
+    /* justify-content: center;   */
+}
+
+header .menuSide .songMenu li:hover {
+    background-color: rgb(79, 119, 117);
+}
+
+header .menuSide .songMenu .songItem img {
+    max-height: 35px;
+    border-radius: 15px;
+    margin: 0px 10px 0 0;
+    transition: 0.3s all;
+
+}
+header .menuSide .songMenu .songItem{
+    position: relative;
+}
+
+header .menuSide .songMenu .songItem h5 {
+    /* position: relative; */
+    font-size: 1rem;
+    /* border: 2px solid red; */
+    text-align: center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    /* margin-left: 10px; */
+    cursor: pointer;
+    transition: 0.3s all;
+    /* width: 50%; */
+    /* border: 2px solid red; */
+}
+
+header .menuSide .songMenu .songItem h5:hover,h6:hover,span:hover {
+    color: rgb(16, 60, 98);
+}
+
+header .menuSide .songMenu .songItem .subtitle {
+    /* position: absolute; */
+    width: 100%;
+    height: 3vh;
+    font-size: 0.8rem;
+    color: rgb(65, 85, 82);
+    /* border: 2px solid red; */
+    text-align: center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+header .menuSide .songMenu .songItem .duration {
+    position: absolute;
+    /* border: 2px solid gray; */
+    left: 240px;
+    margin: 0 10px;
+    font-size: 0.8rem;
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+header .masterPlay {
+    /* border: 2px solid red; */
+    background-color: rgb(32, 132, 148);
+    width: 100%;
+    height: 10%;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    z-index: 1;
+
+}
+
+header .masterPlay .wave {
+    /* border: 2px solid red; */
+    width: 40px;
+    height: 35px;
+    display: flex;
+    align-items: flex-end;
+    margin-right: 10px;
+
+}
+
+header .masterPlay .wave .wave1 {
+    width: 3px;
+    height: 20px;
+    border-radius: 4px;
+    margin-right: 5px;
+    background-color: rgb(0, 255, 170);
+    animation: unset;
+    margin-bottom: 5px;
+}
+
+header .masterPlay .wave .wave1:nth-child(1) {
+    height: 13px;
+    /* animation-duration: 0.4s; */
+}
+
+header .masterPlay .wave .wave1:nth-child(3) {
+    height: 8px;
+    /* animation-duration: 0.8s; */
+}
+
+header .masterPlay .wave .wave1:nth-child(4) {
+    height: 15px;
+    /* animation-duration: 0.5s; */
+}
+
+header .masterPlay img {
+    height: 35px;
+    border-radius: 15px;
+    /* margin: 0px 5px; */
+}
+
+header .masterPlay h5 {
+    margin: 0 15px;
+    font-size: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: 0.3s all;
+}
+
+header .masterPlay h5 .subtitle {
+    font-size: 0.7rem;
+    color: rgb(19, 61, 55)
+}
+
+header .masterPlay h5:hover,
+header .masterPlay h5 .subtitle:hover {
+    color: rgb(6, 39, 64)
+}
+
+header .masterPlay .icons {
+    /* border: 2px solid red; */
+    font-size: 20px;
+    color: white;
+    margin: 0px 10px 0px 40px;
+}
+
+header .masterPlay .icons .bi {
+    cursor: pointer;
+    outline: none;
+    margin: 0px 5px;
+}
+
+
+header .masterPlay span {
+    color: rgb(255, 255, 255);
+    width: 30px;
+    font-size: 0.8rem;
+}
+
+header .masterPlay #currentStart {
+    margin: 0 10px;
+}
+
+header .masterPlay #currentEnd {
+    margin: 0 10px;
+}
+
+header .masterPlay .bar {
+    background-color: rgb(116, 178, 178);
+    width: 40%;
+    height: 5px;
+    position: relative;
+    border-radius: 3px;
+}
+
+header .masterPlay .bar .bar2 {
+    background-color: rgb(101, 117, 117);
+    width: 0%;
+    height: 5px;
+    position: absolute;
+    border-radius: 3px;
+    top: 0px;
+    transition: 1s linear;
+}
+
+header .masterPlay .bar .dot {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: rgb(101, 117, 117);
+    border-radius: 10px;
+    top: -2px;
+    /* left: 0%; */
+    transition: 1s linear;
+}
+
+header .masterPlay .bar .dot::before {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background-color: rgb(101, 117, 117);
+    border-radius: 10px;
+    top: -5px;
+    left: -6px;
+    box-shadow: inset 0px 0px 3px rgb(101, 117, 117);
+}
+
+header .masterPlay .bar input {
+    background-color: rgb(116, 178, 178);
+    width: 100%;
+    height: 5px;
+    position: absolute;
+    top: 0px;
+    left: 0%;
+    cursor: pointer;
+    z-index: 999999;
+    opacity: 0;
+    transition: 3s linear;
+}
+
+header .masterPlay .vol {
+    background-color: rgb(116, 178, 178);
+    width: 128px;
+    height: 5px;
+    position: relative;
+    border-radius: 3px;
+    margin-left: 90px;
+    cursor: pointer;
+}
+
+header .masterPlay .vol .bi {
+    color: white;
+    top: -6px;
+    position: absolute;
+    /* margin:0px 10px; */
+    right: 135px;
+}
+
+header .masterPlay .vol .volBar {
+    background-color: rgb(101, 117, 117);
+    width: 0%;
+    height: 5px;
+    position: absolute;
+    border-radius: 3px;
+    top: 0px;
+    transition: 1s linear;
+}
+
+header .masterPlay .vol .volDot {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: rgb(101, 117, 117);
+    border-radius: 10px;
+    top: -2px;
+    /* left: 0%; */
+    transition: 1s linear;
+}
+
+header .masterPlay .vol .volDot::before {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background-color: rgb(101, 117, 117);
+    border-radius: 10px;
+    top: -5px;
+    left: -6px;
+    box-shadow: inset 0px 0px 3px rgb(101, 117, 117);
+}
+
+header .masterPlay .vol input {
+    background-color: rgb(116, 178, 178);
+    width: 100%;
+    height: 5px;
+    position: absolute;
+    top: -1px;
+    left: 0%;
+    cursor: pointer;
+    z-index: 999999;
+    opacity: 0;
+    transition: 3s linear;
+}
+
+header .songSide {
+    z-index: 1;
+    overflow: auto;
+    scroll-behavior: smooth;
+}
+header .songSide::-webkit-scrollbar{
+    display: none;
+}
+
+header .songSide::before {
+    content: '';
+    position: absolute;
+    background-image: url(bg1.jpg);
+    width: 100%;
+    height: 55vh;
+    opacity: 0.5;
+    top: 0%;
+    z-index: -1;
+}
+
+header .songSide nav {
+    /* border: 2px solid red; */
+    width: 90%;
+    height: 10%;
+    display: flex;
+    align-items: center;
+    margin: auto;
+    justify-content: space-between;
+    position: relative;
+    top: 10px;
+}
+
+header .songSide nav ul {
+    display: flex;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+
+}
+
+header .songSide nav ul li {
+    list-style: none;
+    /* margin: 0 15px;     */
+    padding: 0 10px;
+}
+
+header .songSide nav ul li a.active3 {
+    text-decoration: 3px solid underline;
+}
+
+header .songSide nav ul li a {
+    text-decoration: none;
+    color: white;
+    transition: 0.6s all;
+    font-size: 1.3rem;
+
+}
+
+header .songSide nav ul li a:hover {
+    color: rgb(16, 60, 98);
+    font-size: 1.1rem;
+    text-decoration: 3px solid underline;
+}
+
+header .songSide nav .sreach {
+    margin: 0 30px 0 10px;
+}
+
+header .songSide nav .sreach .bi {
+    color: white;
+    font-size: 1.3rem;
+    cursor: pointer;
+    margin: 0 5px;
+}
+
+header .songSide nav .sreach input {
+    padding: 3px 5px;
+    border: 1px solid black;
+    background-color: wheat;
+    border-radius: 5px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 1rem;
+}
+
+header .songSide nav .user {
+    width: 10%;
+    height: 55px;
+    display: flex;
+    /* border: 2px solid black; */
+    align-items: center;
+    margin: 0 10px;
+
+}
+
+header .songSide nav .user img {
+    /* margin: 10px ; */
+    height: 80px;
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+}
+
+header .songSide .content {
+    /* border: 1px solid red; */
+    width: 90%;
+    height: 45vh;
+    margin: auto;
+    padding: 10px;
+    position: relative;
+    top: 50px;
+
+}
+
+header .songSide .content h1 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 1.8rem;
+    color: white;
+}
+
+header .songSide .content p {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 1.1rem;
+    padding: 5px 0;
+    color: white;
+}
+
+header .songSide .content .buttons {
+    width: 50%;
+    height: 40px;
+    /* border: 2px solid red; */
+    margin: 20px 0;
+}
+
+header .songSide .content .buttons button {
+    width: 40%;
+    height: 40px;
+    padding: 4px 0;
+    /* border: none; */
+    border-radius: 25px;
+    font-weight: bold;
+    background: wheat;
+    outline: none;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: 0.3s linear;
+}
+
+header .songSide .content .buttons button:hover {
+    color: wheat;
+    border: 2px solid wheat;
+    background: none;
+}
+
+header .songSide .content .buttons button:nth-child(2) {
+    color: wheat;
+    border: 2px solid wheat;
+    background: none;
+}
+
+header .songSide .content .buttons button:nth-child(2):hover {
+    color: black;
+    border: 2px solid black;
+    background: wheat;
+}
+
+header .songSide .papularSong {
+    /* border: 2px solid red; */
+    width: 90%;
+    height: auto;
+    margin: auto;
+    margin-top: 25px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    /* border: 2px solid red; */
+   
+}
+
+header .songSide .papularSong .h4 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header .songSide .papularSong .h4 .bi {
+    cursor: pointer;
+    color: rgb(8, 8, 8);
+    transition: 0.3s linear;
+    cursor: pointer;
+}
+
+header .songSide .papularSong .h4 .bi:hover {
+    color: rgb(59, 112, 109);
+}
+
+header .songSide .papularSong .popSong {
+    width: 100%;
+    height: 150px;
+    margin-top: 10px;
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+}
+
+header .songSide .papularSong .popSong::-webkit-scrollbar {
+    display: none;
+}
+
+header .songSide .papularSong .popSong li {
+    width: 100px;
+    height: 140px;
+    list-style: none;
+    margin-right: 10px;
+    transition: 0.3s linear;
+}
+
+header .songSide .papularSong .popSong li:hover {
+    background-color: rgb(43, 96, 153);
+}
+
+header .songSide .papularSong .popSong li .img_play {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    justify-content: center;
+}
+
+header .songSide .papularSong .popSong li .img_play img {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+}
+
+header .songSide .papularSong .popSong li .img_play .bi {
+    position: absolute;
+    /* left: -70px; */
+    font-size: 3rem;
+    color: white;
+    opacity: 0;
+    cursor: pointer;
+    transition: 0.3s linear;
+}
+
+header .songSide .papularSong .popSong li .img_play .bi:hover {
+    opacity: 1;
+}
+
+header .songSide .papularSong .popSong li h5 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    padding: 5px 0;
+    
+
+}
+
+header .songSide .papularSong .popSong li h5 .subtitle {
+    font-size: 0.7rem;
+    color: rgb(61, 60, 60);
+}
+
+header .songSide .papularArtist{
+    width: 90%;
+    height: auto;
+    margin: auto;
+    margin-top: 15px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+header .songSide .papularArtist .h4{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+header .songSide .papularArtist .h4 .bi{  
+        cursor: pointer;
+        color: rgb(8, 8, 8);
+        transition: 0.3s linear;
+}
+header .songSide .papularArtist .h4 .bi:hover{
+    color: rgb(59, 112, 109);        
+}
+header .songSide .papularArtist .item{
+    width: 100%;
+    height: auto;
+    display: flex;    
+    transition: 0.3s linear;
+    /* border: 2px solid red; */
+    overflow-x: scroll;
+}
+header .songSide .papularArtist .item::-webkit-scrollbar{
+    display: none;
+}
+header .songSide .papularArtist .item li{
+    list-style: none;
+    position: relative;
+    min-width: 60px;
+    height: 60px;
+    background-color: gray;
+    border-radius: 50%;
+    margin: 10px 5px;
+    cursor: pointer;
+    
+}
+header .songSide .papularArtist .item li img{
+    width: 100%;
+    height: 60px ;
+    border-radius: 50%;
+    position: absolute;
+
+}
+
+
+/* JAvascrpit activation */
+header .masterPlay .active2 .wave1 {
+    animation: wave 0.5s linear infinite;
+}
+
+header .masterPlay .active2 .wave1:nth-child(1) {
+    animation-delay: 0.4s;
+}
+
+header .masterPlay .active2 .wave1:nth-child(3) {
+    animation-delay: 0.8s;
+}
+
+header .masterPlay .active2 .wave1:nth-child(4) {
+    animation-duration: 0.5s;
+}
+
+@keyframes wave {
+    0% {
+        height: 10px;
+    }
+
+    50% {
+        height: 20px;
+    }
+
+    100% {
+        height: 0px;
+    }
+}
+
+
+/* songItem1 */
+header .songMenu .songItem1{
+    display: flex;
+    /* margin-top: 10px; */
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    transition: 0.6s linear;
+    height: 60px;
+    align-items: center;
+}
+header .songMenu .songItem1:hover{
+    background-color: rgb(164, 158, 158);
+}
+header .songMenu .songItem1 img{
+    height: 40px;
+    border-radius: 50%;
+}
+header .songMenu .songItem1 .bi{
+    font-size: 1.3rem;
+    cursor: pointer;
+} 
+header .songMenu .songItem1 h4{
+    font-size: 1rem;
+    text-align: center;
+    /* margin-left: 10px; */
+    /* border: 2px solid red; */
+    width: 100%;
+    transition: 0.5s linear;
+    
+}
+header .songMenu .songItem1 h4 .sub{
+    font-size: 0.7rem;
+    /* text-align: center; */
+}
+header .songMenu .songItem1 span{
+    font-size: 0.9rem;
+    margin:0 10px ;
+    cursor: pointer;
+}
+header .songMenu .songItem1 h4:hover,header .songMenu .songItem1 span:hover,header .songMenu .songItem1 .bi:hover{
+    color: rgb(41, 77, 75)
+}
